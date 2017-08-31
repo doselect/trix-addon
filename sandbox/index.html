@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="trixSandbox">
+
+<head>
+    <title>Sandbox for Trix Editor</title>
+    <link rel="stylesheet" href="../node_modules/trix/dist/trix.css">
+</head>
+<body>
+    <div ng-controller="sandboxEditorCtrl">
+        <trix-editor angular-trix ng-model="foo"></trix-editor>
+    </div>
+
+    <script src = "../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/trix/dist/trix.js"></script>
+    <script src="../node_modules/angular-trix/dist/angular-trix.min.js"></script>
+    <script src="../trix-addon.js"></script>
+    <script src="index_ctrl.js"></script>
+</body>
+</html>

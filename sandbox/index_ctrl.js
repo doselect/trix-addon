@@ -1,6 +1,6 @@
 
-angular.module("trixSandbox", [])
-  .controller('sandboxEditorCtrl', function ($scope) {
+angular.module("trixSandbox", ['angularTrix'])
+  .controller('sandboxEditorCtrl', ['$scope', function ($scope) {
     console.log('test')
-  })
+  }])
 
