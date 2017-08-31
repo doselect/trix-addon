@@ -19,6 +19,6 @@
   "dependencies": {
     "angular": "^1.5.3",
     "angular-trix": "^1.0.2",
-    "trix": "^0.11.0"
+    "trix": "^0.10.1"
   }
 }
