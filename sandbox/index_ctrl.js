@@ -2,7 +2,7 @@
 angular.module("trixSandbox", ['angularTrix'])
   .controller('sandboxEditorCtrl', ['$scope', function ($scope) {
 
-    $scope.description = 'this is a test model text 1.sub<sub>2</sub> 2. sup<sup>3</sup> 3. strong <strong>Hello</strong>'
+    $scope.description = 'this is a test model text 1.sub<sub>2</sub> 2. sup<sup>3</sup>'
 
   }])
 

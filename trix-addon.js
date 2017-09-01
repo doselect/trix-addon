@@ -5,7 +5,7 @@
     toolBar = trix.toolbarElement;
     Trix.config.textAttributes.sup = {tagName: 'sup'}
     Trix.config.textAttributes.sub = {tagName: 'sub'}
-
+    Trix.config.blockAttributes.heading2 = {tagName:"h2",terminal:!0,breakOnReturn:!0,group:!1}
     //Superscript
     superscriptButtonElem = document.createElement('button')
     superscriptButtonElem.setAttribute('type', 'button')
@@ -41,6 +41,15 @@
       trix.editor.insertHTML('<sub>' + selectedText + '</sub>')
     })
 
+    //Subheading 
+    subheadingButtonElem = document.createElement('button')
+    subheadingButtonElem.setAttribute('type', 'button')
+    subheadingButtonElem.setAttribute('title', 'SubHeading')
+    subheadingButtonElem.setAttribute('tabindex', '-1')
+    subheadingButtonElem.setAttribute('data-trix-attribute', 'heading2')
+    subheadingButtonElem.setAttribute('class', 'icon heading-2')
+    subheadingButtonElem.innerText = 'SubHeading'
+    subheadingButton = toolBar.querySelector('.button_group.block_tools').appendChild(subheadingButtonElem)
     // document.querySelector("trix-editor").editor.insertHTML("Hello<sup>2</sup><sub>22</sub>")
   });
 
