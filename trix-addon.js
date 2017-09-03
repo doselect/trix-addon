@@ -59,7 +59,19 @@
       trix.editor.setSelectedRange(range)
       trix.editor.insertHTML('<h2>' + selectedText + '</h2>')
     })
-
+    // Event listener for adding figure caption
+    addEventListener("trix-attachment-add", function(event) {
+      var attachment = event.attachment
+      if (attachment.file) {
+        var editor = event.target.editor
+        var originalRange = editor.getSelectedRange()
+        var attachmentRange = editor.getDocument().getRangeOfAttachment(attachment)
+        
+        editor.setSelectedRange(attachmentRange)
+        editor.activateAttribute("caption", "<Insert Caption>")
+        editor.setSelectedRange(originalRange)
+      }
+    })
     // document.querySelector("trix-editor").editor.insertHTML("Hello<sup>2</sup><sub>22</sub>")
   });
 
