@@ -5,8 +5,7 @@
     toolBar = trix.toolbarElement;
     Trix.config.textAttributes.sup = {tagName: 'sup'}
     Trix.config.textAttributes.sub = {tagName: 'sub'}
-    Trix.config.textAttributes.subheading = {tagName: 'subheading'}
-
+    Trix.config.blockAttributes.heading2 = {tagName:"h2",terminal:!0,breakOnReturn:!0,group:!1}
     //Superscript
     superscriptButtonElem = document.createElement('button')
     superscriptButtonElem.setAttribute('type', 'button')
@@ -42,24 +41,15 @@
       trix.editor.insertHTML('<sub>' + selectedText + '</sub>')
     })
 
-
     //Subheading 
     subheadingButtonElem = document.createElement('button')
     subheadingButtonElem.setAttribute('type', 'button')
-    subheadingButtonElem.setAttribute('title', 'Subheading')
+    subheadingButtonElem.setAttribute('title', 'SubHeading')
     subheadingButtonElem.setAttribute('tabindex', '-1')
-    subheadingButtonElem.setAttribute('class', 'icon subheading')
-    subheadingButtonElem.innerText = 'Subheading'
- 
+    subheadingButtonElem.setAttribute('data-trix-attribute', 'heading2')
+    subheadingButtonElem.setAttribute('class', 'icon heading-2')
+    subheadingButtonElem.innerText = 'SubHeading'
     subheadingButton = toolBar.querySelector('.button_group.block_tools').appendChild(subheadingButtonElem)
-             
-    subheadingButton.addEventListener('click', function (event) {
-      var range = trix.editor.getSelectedRange()
-      var selectedText = trix.editor.getDocument().getStringAtRange(range)
-      trix.editor.setSelectedRange(range)
-      trix.editor.insertHTML('<h2>' + selectedText + '</h2>')
-    })
-
     // document.querySelector("trix-editor").editor.insertHTML("Hello<sup>2</sup><sub>22</sub>")
   });
 
