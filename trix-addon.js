@@ -1,66 +1,59 @@
 /* Trix AddOn File */
-(function() {
-  document.addEventListener('trix-initialize', function(e) {
-    trix = e.target;
-    toolBar = trix.toolbarElement;
-    Trix.config.textAttributes.sup = {tagName: 'sup'}
-    Trix.config.textAttributes.sub = {tagName: 'sub'}
-    Trix.config.textAttributes.subheading = {tagName: 'subheading'}
+
+Trix.config.textAttributes.sup = { tagName: "sup", inheritable: true }
+Trix.config.textAttributes.sub = { tagName: "sub", inheritable: true }
+Trix.config.textAttributes.subheading = { tagName: "h2", inheritable: true  }
+
+
+  addEventListener('trix-initialize', function(event) {
+    var element = event.target
+    var editor = element.editor
+    var toolbarElement = element.toolbarElement
+    var groupElement = toolbarElement.querySelector(".button_group.text_tools")
 
     //Superscript
-    superscriptButtonElem = document.createElement('button')
-    superscriptButtonElem.setAttribute('type', 'button')
-    superscriptButtonElem.setAttribute('title', 'Superscript')
-    superscriptButtonElem.setAttribute('tabindex', '-1')
-    superscriptButtonElem.setAttribute('class', 'icon superscript')
-    superscriptButtonElem.innerText = 'Superscript'
 
-    superscriptButton = toolBar.querySelector('.button_group.block_tools').appendChild(superscriptButtonElem)
-
-    superscriptButton.addEventListener('click', function (event) {
-      var range = trix.editor.getSelectedRange()
-      var selectedText = trix.editor.getDocument().getStringAtRange(range)
-      trix.editor.setSelectedRange(range)
-      trix.editor.insertHTML('<sup>' + selectedText + '</sup>')
-    })
-
+    groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sup" title="Superscript" tabindex="-1" class="icon superscript">Superscript</button>')
 
     // Subscript
-    subscriptButtonElem = document.createElement('button')
-    subscriptButtonElem.setAttribute('type', 'button')
-    subscriptButtonElem.setAttribute('title', 'Subscript')
-    subscriptButtonElem.setAttribute('tabindex', '-1')
-    subscriptButtonElem.setAttribute('class', 'icon subscript')
-    subscriptButtonElem.innerText = 'Subscript'
 
-    subscriptButton = toolBar.querySelector('.button_group.block_tools').appendChild(subscriptButtonElem)
+    groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sub" title="Subscript" tabindex="-1" class="icon subscript">Subscript</button>')
 
-    subscriptButton.addEventListener('click', function (event) {
-      var range = trix.editor.getSelectedRange()
-      var selectedText = trix.editor.getDocument().getStringAtRange(range)
-      trix.editor.setSelectedRange(range)
-      trix.editor.insertHTML('<sub>' + selectedText + '</sub>')
-    })
+    //Subheading
 
+    groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
 
-    //Subheading 
-    subheadingButtonElem = document.createElement('button')
-    subheadingButtonElem.setAttribute('type', 'button')
-    subheadingButtonElem.setAttribute('title', 'Subheading')
-    subheadingButtonElem.setAttribute('tabindex', '-1')
-    subheadingButtonElem.setAttribute('class', 'icon subheading')
-    subheadingButtonElem.innerText = 'Subheading'
- 
-    subheadingButton = toolBar.querySelector('.button_group.block_tools').appendChild(subheadingButtonElem)
-             
-    subheadingButton.addEventListener('click', function (event) {
-      var range = trix.editor.getSelectedRange()
-      var selectedText = trix.editor.getDocument().getStringAtRange(range)
-      trix.editor.setSelectedRange(range)
-      trix.editor.insertHTML('<h2>' + selectedText + '</h2>')
-    })
+    var selectedAttributes = new Set
 
-    // document.querySelector("trix-editor").editor.insertHTML("Hello<sup>2</sup><sub>22</sub>")
-  });
+    function updateSelectedAttributes () {
+      selectedAttributes = new Set
 
-}).call(this);
+      var selectedRange = editor.getSelectedRange()
+      if (selectedRange[0] === selectedRange[1]) { selectedRange[1]++ }
+
+      var selectedPieces = editor.getDocument().getDocumentAtRange(selectedRange).getPieces()
+      selectedPieces.forEach(function (piece) {
+        Object.keys(piece.getAttributes()).forEach(function (attribute) {
+          selectedAttributes.add(attribute)
+        })
+      })
+    }
+
+    function enforceExclusiveAttributes () {
+      if (editor.attributeIsActive("sup") && selectedAttributes.has("sub")) {
+        editor.deactivateAttribute("sub")
+        updateSelectedAttributes()
+      } else if (editor.attributeIsActive("sub") && selectedAttributes.has("sup")) {
+        editor.deactivateAttribute("sup")
+        updateSelectedAttributes()
+      } else if(editor.attributeIsActive("subheading")){
+        updateSelectedAttributes()
+      }
+
+    }
+
+    updateSelectedAttributes()
+    element.addEventListener("trix-selection-change", updateSelectedAttributes)
+    element.addEventListener("trix-change", enforceExclusiveAttributes)
+
+  })
