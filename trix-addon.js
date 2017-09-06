@@ -2,7 +2,7 @@
 
 Trix.config.textAttributes.sup = { tagName: "sup", inheritable: true }
 Trix.config.textAttributes.sub = { tagName: "sub", inheritable: true }
-Trix.config.textAttributes.subheading = { tagName: "h2", inheritable: true  }
+Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
 
 
   addEventListener('trix-initialize', function(event) {
@@ -10,7 +10,7 @@ Trix.config.textAttributes.subheading = { tagName: "h2", inheritable: true  }
     var editor = element.editor
     var toolbarElement = element.toolbarElement
     var groupElement = toolbarElement.querySelector(".button_group.text_tools")
-
+    var blockElement = toolbarElement.querySelector(".button_group.block_tools")
     //Superscript
 
     groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sup" title="Superscript" tabindex="-1" class="icon superscript">Superscript</button>')
@@ -21,7 +21,7 @@ Trix.config.textAttributes.subheading = { tagName: "h2", inheritable: true  }
 
     //Subheading
 
-    groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
+    blockElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
 
     var selectedAttributes = new Set
 
