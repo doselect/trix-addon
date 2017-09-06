@@ -52,8 +52,20 @@ Trix.config.textAttributes.subheading = { tagName: "h2", inheritable: true  }
 
     }
 
+    function updateAttachmentAttributes () {
+      var attachment = event.attachment
+      if (attachment.file) {
+        var editor = event.target.editor
+        var originalRange = editor.getSelectedRange()
+        var attachmentRange = editor.getDocument().getRangeOfAttachment(attachment)
+        
+        editor.setSelectedRange(attachmentRange)
+        editor.activateAttribute("caption", "<Insert Caption>")
+        editor.setSelectedRange(originalRange)
+      }
+    }
     updateSelectedAttributes()
     element.addEventListener("trix-selection-change", updateSelectedAttributes)
     element.addEventListener("trix-change", enforceExclusiveAttributes)
-
+    element.addEventListener("trix-attachment-add", updateAttachmentAttributes)
   })
