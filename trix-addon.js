@@ -9,18 +9,16 @@ Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
     var element = event.target
     var editor = element.editor
     var toolbarElement = element.toolbarElement
-    var groupElement = toolbarElement.querySelector(".button_group.text_tools")
-    var blockElement = toolbarElement.querySelector(".button_group.block_tools")
-    //Superscript
+    var groupElement = toolbarElement.querySelector(".button_group.text_tools")   // Text elements selector
+    var blockElement = toolbarElement.querySelector(".button_group.block_tools")  // Block elements selector
 
+    //Superscript
     groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sup" title="Superscript" tabindex="-1" class="icon superscript">Superscript</button>')
 
     // Subscript
-
     groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sub" title="Subscript" tabindex="-1" class="icon subscript">Subscript</button>')
 
     //Subheading
-
     blockElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
 
     var selectedAttributes = new Set
@@ -47,6 +45,8 @@ Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
         editor.deactivateAttribute("sup")
         updateSelectedAttributes()
       } else if(editor.attributeIsActive("subheading")){
+        updateSelectedAttributes()
+      } else if(editor.attributeIsActive("separator")){
         updateSelectedAttributes()
       }
 

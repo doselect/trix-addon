@@ -20,5 +20,9 @@
     "angular": "^1.5.3",
     "angular-trix": "^1.0.2",
     "trix": "^0.10.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1"
   }
 }

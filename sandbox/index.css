@@ -1,0 +1,60 @@
+.trix-editor {
+    outline: 0;
+}
+
+trix-toolbar .button_group {
+    border: 0;
+}
+
+trix-toolbar .button_group button,
+trix-toolbar .button_group input[type=button] {
+    border-bottom: 0;
+}
+
+trix-toolbar .button_group button:not(:first-child),
+trix-toolbar .button_group input[type=button]:not(:first-child) {
+    border-left: 1px solid #ccc
+}
+
+trix-toolbar .dialogs .dialog input[type=button] {
+    padding: 1px 8px 0;
+    width: auto;
+}
+
+trix-toolbar .dialogs .dialog input[type=text],
+trix-toolbar .dialogs .dialog input[type=url] {
+    outline: 0;
+}
+
+trix-toolbar .dialogs .dialog input[type=text].validate:invalid,
+trix-toolbar .dialogs .dialog input[type=url].validate:invalid {
+    box-shadow: red 0 0 1.5px 1px;
+}
+
+trix-toolbar .button_group button:not(:first-child),
+trix-toolbar .button_group input[type=button]:not(:first-child) {
+    border-left: none;
+}
+
+trix-toolbar button.superscript::before {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE2LDcuNDFMMTEuNDEsMTJMMTYsMTYuNTlMMTQuNTksMThMMTAsMTMuNDFMNS40MSwxOEw0LDE2LjU5TDguNTksMTJMNCw3LjQxTDUuNDEsNkwxMCwxMC41OUwxNC41OSw2TDE2LDcuNDFNMjEuODUsOUgxNi45N1Y4TDE3Ljg2LDcuMThDMTguNjIsNi41NCAxOS4xOCw2IDE5LjU2LDUuNTVDMTkuOTMsNS4xMSAyMC4xMiw0LjcgMjAuMTMsNC4zMkMyMC4xNCw0LjA0IDIwLjA1LDMuOCAxOS44NiwzLjYyQzE5LjY4LDMuNDMgMTkuMzksMy4zNCAxOSwzLjMzQzE4LjY5LDMuMzQgMTguNDIsMy40IDE4LjE2LDMuNUwxNy41LDMuODlMMTcuMDUsMi43MkMxNy4zMiwyLjUgMTcuNjQsMi4zMyAxOC4wMywyLjE5QzE4LjQyLDIuMDUgMTguODUsMiAxOS4zMiwyQzIwLjEsMiAyMC43LDIuMiAyMS4xLDIuNjFDMjEuNSwzIDIxLjcyLDMuNTQgMjEuNzIsNC4xOEMyMS43MSw0Ljc0IDIxLjUzLDUuMjYgMjEuMTgsNS43M0MyMC44NCw2LjIxIDIwLjQyLDYuNjYgMTkuOTEsNy4wOUwxOS4yNyw3LjYxVjcuNjNIMjEuODVWOVoiIC8+PC9zdmc+);
+}
+
+trix-toolbar button.subscript::before {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE2LDcuNDFMMTEuNDEsMTJMMTYsMTYuNTlMMTQuNTksMThMMTAsMTMuNDFMNS40MSwxOEw0LDE2LjU5TDguNTksMTJMNCw3LjQxTDUuNDEsNkwxMCwxMC41OUwxNC41OSw2TDE2LDcuNDFNMjEuODUsMjEuMDNIMTYuOTdWMjAuMDNMMTcuODYsMTkuMjNDMTguNjIsMTguNTggMTkuMTgsMTguMDQgMTkuNTYsMTcuNkMxOS45MywxNy4xNiAyMC4xMiwxNi43NSAyMC4xMywxNi4zNkMyMC4xNCwxNi4wOCAyMC4wNSwxNS44NSAxOS44NiwxNS42NkMxOS42OCwxNS41IDE5LjM5LDE1LjM4IDE5LDE1LjM4QzE4LjY5LDE1LjM4IDE4LjQyLDE1LjQ0IDE4LjE2LDE1LjU2TDE3LjUsMTUuOTRMMTcuMDUsMTQuNzdDMTcuMzIsMTQuNTYgMTcuNjQsMTQuMzggMTguMDMsMTQuMjRDMTguNDIsMTQuMSAxOC44NSwxNCAxOS4zMiwxNEMyMC4xLDE0LjA0IDIwLjcsMTQuMjUgMjEuMSwxNC42NkMyMS41LDE1LjA3IDIxLjcyLDE1LjU5IDIxLjcyLDE2LjIzQzIxLjcxLDE2Ljc5IDIxLjUzLDE3LjMxIDIxLjE4LDE3Ljc4QzIwLjg0LDE4LjI1IDIwLjQyLDE4LjcgMTkuOTEsMTkuMTRMMTkuMjcsMTkuNjZWMTkuNjhIMjEuODVWMjEuMDNaIiAvPjwvc3ZnPg==);
+}
+
+trix-toolbar button.embed::before {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIsNVYxOEgxMVYxNkg0VjdIMTdWMTFIMTlWNUgyTTksOVYxNEwxMi41LDExLjVMOSw5TTIxLjA0LDExLjY3TDE2LjA5LDE2LjYyTDEzLjk2LDE0LjVMMTIuNTUsMTUuOTFMMTYuMDksMTkuNDVMMjIuNDUsMTMuMDlMMjEuMDQsMTEuNjdaIiAvPjwvc3ZnPg==);
+}
+
+trix-toolbar .button_row {
+    justify-content: center;
+}
+
+
+// Adjust the width of each button, so the buttons do not overflow
+trix-toolbar .button_group button.icon, trix-toolbar .button_group input[type=button].icon {
+       width: 2.4em;
+       height: 1.5em;
+   }
