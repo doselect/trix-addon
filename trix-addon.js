@@ -19,7 +19,7 @@ Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
     groupElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="sub" title="Subscript" tabindex="-1" class="icon subscript">Subscript</button>')
 
     //Subheading
-    blockElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
+    blockElement.childNodes[1].insertAdjacentHTML("afterend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
 
     var selectedAttributes = new Set
 
