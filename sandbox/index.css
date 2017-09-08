@@ -59,8 +59,6 @@ trix-toolbar .button_row {
     justify-content: center;
 }
 
-
-//Adjust the width of each button, so the buttons do not overflow
 trix-toolbar .button_group button.icon, trix-toolbar .button_group input[type=button].icon {
        width: 2.2em;
        height: 1.5em;
@@ -68,4 +66,8 @@ trix-toolbar .button_group button.icon, trix-toolbar .button_group input[type=bu
 
 trix-toolbar .button_group button.active, trix-toolbar .button_group input[type=button].active {
     background: #bafbd6;
+}
+trix-editor.formatted-content {
+    overflow-y: auto;
+    max-height: 500px;
 }

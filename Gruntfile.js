@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       },
       target: {
         files: {
-          'build/trix-addons.css': ['sandbox/index.css']
+          'build/trix-addons-v1.0.0.css': ['sandbox/index.css']
         }
       }
     }
