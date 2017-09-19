@@ -1,3 +1,5 @@
+
+
 .trix-editor {
     outline: 0;
 }
@@ -77,10 +79,11 @@ trix-toolbar .button_group.history_tools{
 
 trix-editor sep {
     display: block;
-    border: solid 1px #000;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
 }
 trix-editor sep br{
     display: none;
