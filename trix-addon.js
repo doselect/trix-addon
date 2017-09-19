@@ -2,7 +2,8 @@
 
 Trix.config.textAttributes.sup = { tagName: "sup", inheritable: true }
 Trix.config.textAttributes.sub = { tagName: "sub", inheritable: true }
-Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
+Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0 }
+Trix.config.blockAttributes.separator = { tagName: "sep", breakOnReturn : !0 }
 
 
   addEventListener('trix-initialize', function(event) {
@@ -21,6 +22,9 @@ Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
     //Subheading
     blockElement.childNodes[1].insertAdjacentHTML("afterend", '<button type="button" data-trix-attribute="subheading" title="SubHeading" tabindex="-1" class="icon subheading">SubHeading</button>')
 
+    //Seperator
+    blockElement.insertAdjacentHTML("beforeend", '<button type="button" data-trix-attribute="separator" title="seperator" tabindex="-1" class="icon separator">Seperator</button>')
+
     var selectedAttributes = new Set
 
     function updateSelectedAttributes () {
@@ -38,18 +42,22 @@ Trix.config.blockAttributes.subheading = { tagName: "h2", breakOnReturn : !0}
     }
 
     function enforceExclusiveAttributes () {
+      var range = editor.getSelectedRange()
+      console.log(range)
       if (editor.attributeIsActive("sup") && selectedAttributes.has("sub")) {
         editor.deactivateAttribute("sub")
         updateSelectedAttributes()
-      } else if (editor.attributeIsActive("sub") && selectedAttributes.has("sup")) {
+      }
+      if (editor.attributeIsActive("sub") && selectedAttributes.has("sup")) {
         editor.deactivateAttribute("sup")
         updateSelectedAttributes()
-      } else if(editor.attributeIsActive("subheading")){
-        updateSelectedAttributes()
-      } else if(editor.attributeIsActive("separator")){
+      }
+      if(editor.attributeIsActive("subheading")){
         updateSelectedAttributes()
       }
-
+      if(editor.attributeIsActive("separator")){
+        updateSelectedAttributes()
+      }
     }
 
     function updateAttachmentAttributes () {
